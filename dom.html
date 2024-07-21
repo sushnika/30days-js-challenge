@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bg-color {
+        background: #f0f0f0;
+    }
+    .highlight {
+            background-color: yellow;
+            color: red;
+        }
+    </style>
+    
+</head>
+<body>
+    <h1>DOM MANIPULATION</h1>
+    <div id="test">Hello, this is a DOM MANIPULATION</div>
+    <div class="bg-color">Checking about the DOM Classname</div>
+    <img id="img" src="hello.jpg">
+    <ul id="myList" class="all-lists">
+        <li>list 1</li>
+        <li>list 2</li>
+        <li>list 3</li>
+        <li>list 4</li>
+    </ul>
+    <p id="myParagraph">This is a paragraph.</p>
+    <button onclick="document.getElementById('myParagraph').classList.add('highlight')">Add Class</button>
+    <button onclick="document.getElementById('myParagraph').classList.remove('highlight')">Remove Class</button>
+</body>
+<script>
+    // Activity 1: Selecting and Manipulating Data 
+    document.getElementById('test').innerHTML = "Hello, This is Updated DOM MANIPULATION";
+    const elements = document.querySelector('.bg-color');
+    elements.style.background = "red";
+
+    // Activity 2: Creating and Appending ELement
+    const newParagraph1 = document.createElement('p');
+    newParagraph1.textContent = 'This is the first appended text.';
+    document.body.appendChild(newParagraph1);
+
+
+    const list = document.getElementById('myList');
+    const newItem = document.createElement('li');
+    newItem.textContent = 'list 5';
+    list.appendChild(newItem);
+
+    // Activity 3: Removing Elements 
+    const removeElement = document.getElementById('test')
+    removeElement.remove();
+
+    const list1 = document.getElementById('myList');
+    list1.lastElementChild?.remove();
+
+    // Activity 4: Modifying Attributes and classes 
+    document.getElementById('img').setAttribute('src','updated.jpg')
+
+
+</script>
+</html>
