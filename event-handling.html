@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="para-one">
+        Hi, This is a Paragraphn Text
+    </div>
+    <button id="clickChange">Click to change above text</button><br><br>
+    <h4>Click on the image to remove it </h4>
+    <img src="https://fastly.picsum.photos/id/3/536/354.jpg?hmac=UsgKVJNj2lH1bw1HWHOAVqVZI76Fc2X7n9wEK6_DbO4" title="A Dummy Image">
+<br>
+    <input type="text">
+    <input type="text" placeholder="Type something..." id="inputField">
+    <p id="output">Key pressed will appear here</p>
+</body>
+<script>
+// Activity:1 Basic Event Handling
+ document.getElementById('clickChange').addEventListener('click',function(){
+ document.getElementById('para-one').innerText = "This is a Updated Text";
+},false);
+
+const toggleImg= document.querySelector('img')
+toggleImg.addEventListener('click', function(){
+  toggleImg.style.display="none";
+});
+
+// Activity:2 Mouse Event
+const chnageBg = document.getElementById('para-one')
+chnageBg.addEventListener('mouseover',function(){
+    chnageBg.style.backgroundColor = "yellow";
+});
+
+const revertBg = document.getElementById('para-one')
+revertBg.addEventListener('mouseout',function(){
+    revertBg.style.backgroundColor = "white";
+});
+
+// Activity: 3 Keyboard Events 
+const keyDown = document.querySelector('input')
+keyDown.addEventListener('keydown',function(){
+  (alert('Key Pressed'))
+});
+
+const keyUp = document.getElementById('inputField');
+const output = document.getElementById('output');
+keyUp.addEventListener('keyup', function(event) {
+output.innerText = `Key Pressed: ${event.key}`;
+ });
+
+//  Activity 4: Form Event
+// Activity 5: Event Delegation
+</script>
+</html>
