@@ -5,58 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .bg-color {
-        background: #f0f0f0;
-    }
-    .highlight {
-            background-color: yellow;
-            color: red;
+        .para-text{
+            background-color: bisque;
+        }
+        #paragraph{
+            border-color: black;
+            border: 1px solid;
         }
     </style>
     
 </head>
 <body>
-    <h1>DOM MANIPULATION</h1>
-    <div id="test">Hello, this is a DOM MANIPULATION</div>
-    <div class="bg-color">Checking about the DOM Classname</div>
-    <img id="img" src="hello.jpg">
-    <ul id="myList" class="all-lists">
-        <li>list 1</li>
-        <li>list 2</li>
-        <li>list 3</li>
-        <li>list 4</li>
+    <h1 id="paragraph">DOM Manipulation(Double CLick Here)</h1>
+    <h3>Welcome to dashboard</h3>
+    <div id="main-text1">
+        Welcome to the DOM Series !!! (Click This to chnage text)
+       </div><br>
+   <div id="main-text">
+        Hello, This is the Dom.
+   </div>
+   <div class="para-text">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore eos vitae odio eligendi quos consequatur mollitia quia! Laudantium reiciendis nostrum veritatis! Vitae praesentium blanditiis dolorum maiores itaque similique qui ipsa?
+    </div>
+    <ul id="weeks" class="week-list">
+        <li>MOnday</li>
+        <li>Tuesday</li>
+        <li>Wednesday</li>
     </ul>
-    <p id="myParagraph">This is a paragraph.</p>
-    <button onclick="document.getElementById('myParagraph').classList.add('highlight')">Add Class</button>
-    <button onclick="document.getElementById('myParagraph').classList.remove('highlight')">Remove Class</button>
+    <img src="test.jp" title="This is a dummy img"/><br>
 </body>
 <script>
-    // Activity 1: Selecting and Manipulating Data 
-    document.getElementById('test').innerHTML = "Hello, This is Updated DOM MANIPULATION";
-    const elements = document.querySelector('.bg-color');
-    elements.style.background = "red";
+//  Activity 1: Selecting and Manipulationg Elements
+// Task:1
+document.getElementById('main-text').innerText="Welcome to the Javascript DOM Challenge"
 
-    // Activity 2: Creating and Appending ELement
-    const newParagraph1 = document.createElement('p');
-    newParagraph1.textContent = 'This is the first appended text.';
-    document.body.appendChild(newParagraph1);
+// Task: 2
+const changeColor = document.getElementsByClassName('para-text');
+const newColor = Array.from(changeColor)
+newColor.forEach(function(bgcolor){
+    bgcolor.style.backgroundColor = "red";
+});
+
+// Activity 2: Creating and Appending Elements 
+//Task: 3
+const newDiv = document.createElement('div')
+const newContent = newDiv.innerText = "This is a begiining of new paragraph"
+document.body.append(newContent);
+
+//Task: 4
+const existingLi = document.getElementById('weeks')
+const newLi = document.createElement('li');
+newLi.innerText ="Thursday"
+existingLi.appendChild(newLi);
+
+// Activity: 3 Removing Elements
+document.querySelector('h3').remove();
+
+const test = document.getElementById('weeks')
+test.lastElementChild.remove();
+
+// Activity: 4 Modifying Attributes and Classes
+document.querySelector('img').setAttribute('src','updated-img.jpg')
+document.querySelector('ul').setAttribute('class','new-week-list')
 
 
-    const list = document.getElementById('myList');
-    const newItem = document.createElement('li');
-    newItem.textContent = 'list 5';
-    list.appendChild(newItem);
+// Activity: 5 Event Handling
+const newText = document.getElementById('main-text1')
+newText.addEventListener('click',function(){
+    newText.innerText = "Welcome to the DOM JS Series !!! "
+});
 
-    // Activity 3: Removing Elements 
-    const removeElement = document.getElementById('test')
-    removeElement.remove();
-
-    const list1 = document.getElementById('myList');
-    list1.lastElementChild?.remove();
-
-    // Activity 4: Modifying Attributes and classes 
-    document.getElementById('img').setAttribute('src','updated.jpg')
-
+const newMouse = document.getElementById('paragraph')
+newMouse.addEventListener('dblclick',function(){
+    newMouse.style.borderColor = "orange"
+});
 
 </script>
 </html>
