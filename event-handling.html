@@ -16,6 +16,29 @@
     <input type="text">
     <input type="text" placeholder="Type something..." id="inputField">
     <p id="output">Key pressed will appear here</p>
+    <form>
+        <h2>This is a Form Section</h2>
+        <input type="text" name="name">
+        <button type="submit">Submit</button>
+    </form>
+    <div id="select-list">
+        <select id="dropdown">
+            <option value="opt-1">Option1</option>
+            <option value="opt-2">Option2</option>
+            <option value="opt-3">Option3</option>
+        </select>
+        <p id="selectedValue"></p>
+    </div>
+    <ul id="list-data">
+        <li>List one</li>
+        <li>List Two</li>
+        <li>List Three</li>
+        <li>List Four</li>
+        <li>List Five</li>
+    </ul>
+    <ul id="parentContainer">
+
+    </ul>
 </body>
 <script>
 // Activity:1 Basic Event Handling
@@ -52,6 +75,54 @@ output.innerText = `Key Pressed: ${event.key}`;
  });
 
 //  Activity 4: Form Event
-// Activity 5: Event Delegation
+
+const form = document.querySelector('form');
+    form.addEventListener('submit', function(e) {
+        // Prevent Default Submission
+        e.preventDefault();
+        // Create Form Data object 
+        const formData = new FormData(form);
+        formData.forEach(function(value, key) {
+            console.log(`${key}: ${value}`);
+        });
+    });
+
+    const selectDrop = document.querySelector('#dropdown');
+    const selectParaValue = document.querySelector('#selectedValue');
+    //  it will get the selected value
+    selectDrop.addEventListener('change',function(event){
+        const selectValue = event.target.value;
+        selectParaValue.innerText = `Selected Value is: ${selectValue}`
+    })
+    
+    // Activity 5: Event Delegation
+    // Task: 9
+    const textContent = document.getElementById('list-data');
+    textContent.addEventListener('click',function(e){
+        const target = e.target;
+        if(target.matches('li')){
+        target.style.backgroundColor = "green";
+    }
+    })
+
+    // Task: 10 Add an Event Listener to a parent element that listens for events from dynamically added children
+    const parentContainer = document.querySelector('#parentContainer');
+
+        function addButton() {
+            const newButton = document.createElement('button');
+            newButton.textContent = 'Click me';
+            parentContainer.appendChild(newButton);
+        }
+
+        // Event listener on the box (parentContainer)
+        parentContainer.addEventListener('click', function(event) {
+            // Check if the clicked thing is a button
+            if (event.target.tagName === 'BUTTON') {
+                alert('Button clicked!');
+            }
+        });
+        addButton();
+
+    
 </script>
 </html>
